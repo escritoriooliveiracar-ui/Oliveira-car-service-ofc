@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oliveira Car Service - Excelência Automotiva desde 2019</title>
+    
+    <!-- FAVICON -->
+    <link rel="icon" type="icon.png" href="icon.png">
+    <link rel="apple-touch-icon" href="icon.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-red: #dc2626;
+            --deep-red: #b91c1c;
+            --warm-orange: #ea580c;
+            --dark-charcoal: #1f2937;
+            --light-cream: #fef7ed;
+        }
+
+        /* SCROLL SUAVE GLOBAL */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #ffffff;
+            color: #374151;
+        }
+
+        /* Header estilizado */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo-container {
+            background: linear-gradient(135deg, var(--primary-red), var(--deep-red));
+            border-radius: 12px;
+            padding: 8px;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+            font-weight: 600;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section impactante */
+        .hero-gradient {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%);
+        }
+
+        .hero-badge {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* CTAs OTIMIZADOS */
+        .cta-primary {
+            background: linear-gradient(135deg, var(--primary-red), var(--warm-orange));
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cta-primary:hover::before {
+            left: 100%;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.5);
+        }
+
+        .cta-secondary {
+            background: white;
+            color: var(--primary-red);
+            border: 2px solid var(--primary-red);
+            transition: all 0.3s ease;
+        }
+
+        .cta-secondary:hover {
+            background: var(--primary-red);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3);
+        }
+
+        /* Cards estilizados */
+        .service-card {
+            background: white;
+            border: 1px solid #f3f4f6;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.05), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-red);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-red), var(--deep-red));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 6px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 20px rgba(220, 38, 38, 0.4);
+        }
+
+        /* Destaques numéricos */
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-red), var(--warm-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        /* WhatsApp premium */
+        .whatsapp-float {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+            animation: none;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6); }
+            100% { box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); }
+        }
+
+        /* Animações */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in-up.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-left.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Banner CTA final */
+        .final-cta {
+            background: linear-gradient(135deg, var(--primary-red), var(--warm-orange));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        /* Melhorias específicas */
+        .faith-highlight {
+            background: linear-gradient(120deg, #fef3c7 0%, #fef3c7 100%);
+            border-left: 4px solid #f59e0b;
+        }
+
+        /* Cards dos Fundadores */
+        .founder-card {
+            background: white;
+            border: 1px solid #f3f4f6;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .founder-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.05), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .founder-card:hover::before {
+            left: 100%;
+        }
+
+        .founder-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-red);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .founder-image {
+            width: 100px;
+            height: 100px;
+            border: 4px solid var(--primary-red);
+            box-shadow: 0 6px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        /* === MELHORIAS ESTRATÉGICAS === */
+        
+        /* 1. INDICADOR DE SCROLL DISCRETO */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-red), var(--warm-orange));
+            z-index: 1000;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        /* 2. CONTADOR ANIMADO */
+        .counter {
+            display: inline-block;
+            font-weight: 800;
+        }
+
+        /* 3. LOGOS DAS MARCAS */
+        .brand-logo {
+            height: 35px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+
+        .brand-card:hover .brand-logo {
+            transform: scale(1.1);
+        }
+
+        /* 4. SEÇÃO "E MUITO MAIS!" SUPER ESTILIZADA */
+        .services-showcase {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-showcase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><polygon points="0,0 1000,50 1000,100 0,100"/></svg>');
+            background-size: cover;
+        }
+
+        .service-badge {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .service-badge:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- 1. INDICADOR DE SCROLL DISCRETO -->
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+
+    <!-- Header ATUALIZADO -->
+    <header class="fixed w-full z-50 py-3">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between">
+                <!-- Logo Container -->
+                <div class="flex items-center space-x-4">
+                    <div class="logo-container">
+                        <img src="icon.png" alt="Oliveira Car Service" class="h-10 w-10 rounded-lg">
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-black text-gray-900">OLIVEIRA CAR SERVICE</h1>
+                        <p class="text-xs text-gray-600 font-semibold">Excelência desde 2019</p>
+                    </div>
+                </div>
+
+                <!-- Navegação -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-red-600">Início</a>
+                    <a href="#sobre" class="nav-link text-gray-700 hover:text-red-600">Nossa História</a>
+                    <a href="#fundadores" class="nav-link text-gray-700 hover:text-red-600">Fundadores</a>
+                    <a href="#servicos" class="nav-link text-gray-700 hover:text-red-600">Serviços</a>
+                    <a href="#contato" class="nav-link text-gray-700 hover:text-red-600">Contato</a>
+                </nav>
+
+                <!-- CTA Header OTIMIZADO -->
+                <div class="hidden lg:block">
+                    <a href="https://wa.me/556734610167" class="cta-primary text-white px-5 py-2.5 rounded-lg font-bold text-sm">
+                        <i class="fab fa-whatsapp mr-2"></i>FALAR NO ZAP
+                    </a>
+                </div>
+
+                <button class="md:hidden w-10 h-10 flex flex-col justify-center items-center space-y-1.5">
+                    <span class="w-6 h-0.5 bg-gray-700 rounded"></span>
+                    <span class="w-6 h-0.5 bg-gray-700 rounded"></span>
+                    <span class="w-6 h-0.5 bg-gray-700 rounded"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section OTIMIZADA -->
+    <section id="home" class="pt-32 pb-20 hero-gradient text-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="slide-in-left">
+                    <div class="hero-badge rounded-full px-6 py-2 inline-block mb-6">
+                        <span class="text-sm font-semibold">🏆 +15.200 Clientes Satisfeitos</span>
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-5xl font-black mb-6 leading-tight">
+                        Seu carro nas mãos de 
+                        <span class="text-yellow-300">especialistas</span>
+                    </h1>
+                    
+                    <p class="text-lg mb-8 leading-relaxed opacity-90">
+                        <strong>5+ anos de excelência</strong> em cuidados automotivos. 
+                        Tecnologia de ponta, transparência absoluta e o compromisso de quem faz com fé e dedicação.
+                    </p>
+
+                    <!-- CTAs HERO OTIMIZADOS -->
+                    <div class="flex flex-col sm:flex-row gap-3 mb-8">
+                        <a href="https://wa.me/556734610167" class="cta-primary text-white px-6 py-3 rounded-lg font-bold text-center">
+                            <i class="fab fa-whatsapp mr-2"></i>FALAR NO ZAP
+                        </a>
+                        <a href="#contato" class="cta-secondary px-6 py-3 rounded-lg font-bold text-center">
+                            <i class="fas fa-calendar-check mr-2"></i>AGENDAR VISITA
+                        </a>
+                    </div>
+
+                    <div class="flex items-center space-x-6 text-sm">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-shield-alt text-yellow-400"></i>
+                            <span>Garantia em Todos os Serviços</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-award text-yellow-400"></i>
+                            <span>+15.200 Carros Atendidos</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in-up">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=800&q=80" 
+                             alt="Oficina Oliveira Car Service" 
+                             class="rounded-2xl shadow-xl w-full">
+                        
+                        <!-- Destaques Flutuantes OTIMIZADOS -->
+                        <div class="absolute -bottom-4 -left-4 bg-white rounded-2xl p-4 shadow-xl">
+                            <div class="flex items-center space-x-6">
+                                <div class="text-center">
+                                    <div class="stat-number">
+                                        <span class="counter" data-target="6">0</span>+
+                                    </div>
+                                    <div class="text-sm text-gray-600 font-semibold">Anos de Experiência</div>
+                                </div>
+                                <div class="h-10 w-px bg-gray-300"></div>
+                                <div class="text-center">
+                                    <div class="stat-number">
+                                        <span class="counter" data-target="15200">0</span>+
+                                    </div>
+                                    <div class="text-sm text-gray-600 font-semibold">Clientes Satisfeitos</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nossa História OTIMIZADA -->
+    <section id="sobre" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12 fade-in-up">
+                <span class="text-red-600 font-bold text-sm uppercase tracking-wider bg-red-50 px-4 py-2 rounded-full">Nossa História</span>
+                <h2 class="text-3xl md:text-4xl font-black mt-6 mb-6 text-gray-900">
+                    Uma Jornada de 
+                    <span class="text-red-600">Fé e Dedicação</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div class="fade-in-up">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="logo-container">
+                            <img src="icon.png" alt="Oliveira Car Service" class="h-14 w-14 rounded-lg">
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-black text-gray-900">2019 - O Início de Tudo</h3>
+                            <p class="text-red-600 font-semibold">Fé em Deus e Vontade de Vencer</p>
+                        </div>
+                    </div>
+
+                    <div class="faith-highlight rounded-2xl p-6">
+                        <div class="flex items-start space-x-3 mb-4">
+                            <i class="fas fa-pray text-yellow-600 text-lg mt-1"></i>
+                            <p class="text-gray-800 leading-relaxed font-medium">
+                                "Com <strong class="text-red-600">muita fé em Deus</strong> e vontade de fazer a diferença, 
+                                demos vida ao nosso sonho em 2019."
+                            </p>
+                        </div>
+                        
+                        <p class="text-gray-700 mb-4 leading-relaxed">
+                            Acreditávamos que era possível revolucionar o cuidado automotivo com 
+                            <strong class="text-red-600">transparência, honestidade e paixão genuína</strong>.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed">
+                            Hoje, após <strong>6 anos de dedicação</strong>, continuamos com o mesmo propósito: 
+                            <strong>tratar cada carro como único e cada cliente como família</strong>.
+                        </p>
+                        
+                        <!-- CTA História OTIMIZADO -->
+                        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                            <a href="https://wa.me/556734610167" class="cta-primary text-white px-5 py-2.5 rounded-lg font-bold text-center text-sm">
+                                <i class="fab fa-whatsapp mr-2"></i>CONHECER TRABALHO
+                            </a>
+                            <a href="#servicos" class="cta-secondary px-5 py-2.5 rounded-lg font-bold text-center text-sm">
+                                <i class="fas fa-tools mr-2"></i>VER SERVIÇOS
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in-up">
+                    <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80" 
+                         alt="Nossa equipe" 
+                         class="rounded-2xl shadow-lg w-full">
+                    <div class="mt-6 bg-gray-50 rounded-xl p-4 text-center">
+                        <div class="flex justify-center space-x-6">
+                            <div class="text-center">
+                                <div class="text-xl font-black text-red-600">
+                                    <span class="counter" data-target="15200">0</span>+
+                                </div>
+                                <div class="text-sm text-gray-600">Carros Atendidos</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-xl font-black text-red-600">
+                                    <span class="counter" data-target="6">0</span>+
+                                </div>
+                                <div class="text-sm text-gray-600">Anos no Mercado</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-xl font-black text-red-600">100%</div>
+                                <div class="text-sm text-gray-600">Comprometidos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Fundadores OTIMIZADA - CORES INVERTIDAS -->
+    <section id="fundadores" class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12 fade-in-up">
+                <span class="text-red-600 font-bold text-sm uppercase tracking-wider bg-red-50 px-4 py-2 rounded-full">Conheça Nossa Equipe</span>
+                <h2 class="text-3xl md:text-4xl font-black mt-6 mb-6 text-gray-900">
+                    <span class="text-red-600">Os</span> Fundadores
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    As mentes por trás do sucesso da Oliveira Car Service
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Fundador 1 OTIMIZADO -->
+                <div class="founder-card rounded-2xl p-6 text-center fade-in-up">
+                    <div class="flex flex-col items-center mb-4">
+                        <div class="founder-image rounded-full mb-3 overflow-hidden">
+                            <img src="odnilsoon.enc" 
+                                 alt="Odnilson Oliveira - Fundador Oliveira Car Service" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-xl font-black text-gray-900 mb-2">Odnilson Oliveira</h3>
+                        <p class="text-red-600 font-semibold mb-3">Fundador & Especialista Técnico</p>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-4 leading-relaxed text-sm">
+                        Com mais de 10 anos de experiência no mercado automotivo, trouxe a visão técnica 
+                        e o conhecimento profundo de mecânica que fundamentaram a excelência dos nossos serviços.
+                    </p>
+                    
+                    <div class="bg-red-50 rounded-xl p-3 mb-4">
+                        <h4 class="font-bold text-red-900 mb-1 text-sm">Filosofia de Trabalho:</h4>
+                        <p class="text-red-700 italic text-xs">
+                            "Acredito que um carro bem cuidado é extensão da família do seu dono. 
+                            Cada detalhe importa quando se trata de segurança e confiança."
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 text-xs">
+                        <div class="text-center">
+                            <div class="text-base font-black text-red-600">
+                                <span class="counter" data-target="10">0</span>+
+                            </div>
+                            <div class="text-gray-600">Anos na Área</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-base font-black text-red-600">
+                                <span class="counter" data-target="5000">0</span>+
+                            </div>
+                            <div class="text-gray-600">Carros Atendidos</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fundador 2 OTIMIZADO -->
+                <div class="founder-card rounded-2xl p-6 text-center fade-in-up">
+                    <div class="flex flex-col items-center mb-4">
+                        <div class="founder-image rounded-full mb-3 overflow-hidden">
+                            <img src="jussara.jpeg" 
+                                 alt="Jussara Sedano Oliveira - Co-fundadora Oliveira Car Service" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-xl font-black text-gray-900 mb-2">Jussara Sedano Oliveira</h3>
+                        <p class="text-red-600 font-semibold mb-3">Co-fundadora & Diretora Comercial</p>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-4 leading-relaxed text-sm">
+                        Especialista em gestão e atendimento ao cliente, trouxe a paixão por criar 
+                        experiências memoráveis e construir relacionamentos duradouros com cada cliente.
+                    </p>
+                    
+                    <div class="bg-red-50 rounded-xl p-3 mb-4">
+                        <h4 class="font-bold text-red-900 mb-1 text-sm">Filosofia de Trabalho:</h4>
+                        <p class="text-red-700 italic text-xs">
+                            "Nosso maior patrimônio não são as ferramentas, mas a confiança dos clientes. 
+                            Um cliente satisfeito é nossa melhor propaganda."
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 text-xs">
+                        <div class="text-center">
+                            <div class="text-base font-black text-red-600">
+                                <span class="counter" data-target="8">0</span>+
+                            </div>
+                            <div class="text-gray-600">Anos de Gestão</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-base font-black text-red-600">
+                                <span class="counter" data-target="15000">0</span>+
+                            </div>
+                            <div class="text-gray-600">Clientes Atendidos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Fundadores OTIMIZADO -->
+            <div class="text-center mt-12 fade-in-up">
+                <div class="bg-white rounded-2xl p-6 shadow-lg border-2 border-red-600">
+                    <h3 class="text-xl font-black mb-3 text-gray-900">Quer Conhecer Melhor Nossa Equipe?</h3>
+                    <p class="text-gray-600 mb-4">
+                        Agende uma visita e converse diretamente com nossos fundadores
+                    </p>
+                    <a href="https://wa.me/556734610167" class="cta-primary text-white px-6 py-3 rounded-lg font-bold text-sm inline-block">
+                        <i class="fab fa-whatsapp mr-2"></i>FALAR COM OS FUNDADORES
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SERVIÇOS ATUALIZADO - OTIMIZADO E ESTRATÉGICO === -->
+    <section id="servicos" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12 fade-in-up">
+                <span class="text-red-600 font-bold text-sm uppercase tracking-wider bg-red-50 px-4 py-2 rounded-full">Serviços Completos</span>
+                <h2 class="text-3xl md:text-4xl font-black mt-6 mb-6 text-gray-900">
+                    Tudo que Seu Carro
+                    <span class="text-red-600"> Precisa</span>
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Do básico ao complexo, cuidamos de cada detalhe do seu veículo com excelência
+                </p>
+            </div>
+
+            <!-- SERVIÇOS PRINCIPAIS OTIMIZADOS -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <div class="service-card rounded-2xl p-6 text-center">
+                    <div class="service-icon">
+                        <i class="fas fa-oil-can text-xl text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-black mb-3 text-gray-900">Troca de Óleo</h3>
+                    <p class="text-gray-600 mb-4 text-sm">
+                        Óleos premium para performance máxima e durabilidade do motor.
+                    </p>
+                    <a href="https://wa.me/556734610167?text=Olá! Gostaria de saber mais sobre a Troca de Óleo" 
+                       class="cta-primary text-white px-4 py-2 rounded-lg font-bold text-xs inline-block w-full">
+                        <i class="fab fa-whatsapp mr-2"></i>PEDIR ORÇAMENTO
+                    </a>
+                </div>
+
+                <div class="service-card rounded-2xl p-6 text-center">
+                    <div class="service-icon">
+                        <i class="fas fa-car-crash text-xl text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-black mb-3 text-gray-900">Sistema de Freios</h3>
+                    <p class="text-gray-600 mb-4 text-sm">
+                        Segurança em primeiro lugar com revisão completa do sistema.
+                    </p>
+                    <a href="https://wa.me/556734610167?text=Olá! Gostaria de saber mais sobre o Sistema de Freios" 
+                       class="cta-primary text-white px-4 py-2 rounded-lg font-bold text-xs inline-block w-full">
+                        <i class="fab fa-whatsapp mr-2"></i>PEDIR ORÇAMENTO
+                    </a>
+                </div>
+
+                <div class="service-card rounded-2xl p-6 text-center">
+                    <div class="service-icon">
+                        <i class="fas fa-car-side text-xl text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-black mb-3 text-gray-900">Suspensão</h3>
+                    <p class="text-gray-600 mb-4 text-sm">
+                        Conforto e estabilidade para sua dirigibilidade perfeita.
+                    </p>
+                    <a href="https://wa.me/556734610167?text=Olá! Gostaria de saber mais sobre a Suspensão" 
+                       class="cta-primary text-white px-4 py-2 rounded-lg font-bold text-xs inline-block w-full">
+                        <i class="fab fa-whatsapp mr-2"></i>PEDIR ORÇAMENTO
+                    </a>
+                </div>
+            </div>
+
+            <!-- SERVIÇOS ADICIONAIS OTIMIZADOS -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+                <div class="text-center p-4 bg-gray-50 rounded-xl hover:bg-red-50 transition-colors">
+                    <i class="fas fa-bolt text-xl text-red-600 mb-2"></i>
+                    <h4 class="font-black text-gray-900 mb-1 text-sm">Elétrica</h4>
+                    <p class="text-gray-600 text-xs">Sistema elétrico completo</p>
+                </div>
+                <div class="text-center p-4 bg-gray-50 rounded-xl hover:bg-red-50 transition-colors">
+                    <i class="fas fa-tachometer-alt text-xl text-red-600 mb-2"></i>
+                    <h4 class="font-black text-gray-900 mb-1 text-sm">Injeção</h4>
+                    <p class="text-gray-600 text-xs">Diagnóstico e reparo</p>
+                </div>
+                <div class="text-center p-4 bg-gray-50 rounded-xl hover:bg-red-50 transition-colors">
+                    <i class="fas fa-wind text-xl text-red-600 mb-2"></i>
+                    <h4 class="font-black text-gray-900 mb-1 text-sm">Ar Condicionado</h4>
+                    <p class="text-gray-600 text-xs">Manutenção e recarga</p>
+                </div>
+                <div class="text-center p-4 bg-gray-50 rounded-xl hover:bg-red-50 transition-colors">
+                    <i class="fas fa-cogs text-xl text-red-600 mb-2"></i>
+                    <h4 class="font-black text-gray-900 mb-1 text-sm">Transmissão</h4>
+                    <p class="text-gray-600 text-xs">Automática e manual</p>
+                </div>
+            </div>
+
+            <!-- SEÇÃO "E MUITO MAIS!" - SUPER ESTILIZADA -->
+            <div class="services-showcase rounded-3xl p-8 text-white text-center mb-12 relative overflow-hidden">
+                <!-- Elementos decorativos -->
+                <div class="absolute top-0 left-0 w-20 h-20 bg-yellow-400 rounded-full -translate-x-10 -translate-y-10 opacity-20"></div>
+                <div class="absolute bottom-0 right-0 w-16 h-16 bg-yellow-400 rounded-full translate-x-8 translate-y-8 opacity-20"></div>
+                
+                <div class="relative z-10">
+                    <!-- Ícone principal -->
+                    <div class="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <i class="fas fa-tools text-2xl text-white"></i>
+                    </div>
+                    
+                    <h3 class="text-2xl font-black mb-4">🎯 E MUITO MAIS!</h3>
+                    
+                    <!-- Badges de serviços -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+                        <div class="service-badge rounded-lg px-3 py-2 text-sm font-semibold">
+                            <i class="fas fa-cog mr-1"></i> Alinhamento
+                        </div>
+                        <div class="service-badge rounded-lg px-3 py-2 text-sm font-semibold">
+                            <i class="fas fa-sync-alt mr-1"></i> Balanceamento
+                        </div>
+                        <div class="service-badge rounded-lg px-3 py-2 text-sm font-semibold">
+                            <i class="fas fa-shield-alt mr-1"></i> Revisões
+                        </div>
+                        <div class="service-badge rounded-lg px-3 py-2 text-sm font-semibold">
+                            <i class="fas fa-bolt mr-1"></i> Correias
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+                        <div class="service-badge rounded-lg px-3 py-2 text-sm font-semibold">
+                            <i class="fas fa-fire mr-1"></i> Escapamento
+                        </div>
+                        <div class="service-badge rounded-lg px-3 py-2 text-sm font-semibold">
+                            <i class="fas fa-spray-can mr-1"></i> Higienização
+                        </div>
+                        <div class="service-badge rounded-lg px-3 py-2 text-sm font-semibold">
+                            <i class="fas fa-cogs mr-1"></i> Embreagem
+                        </div>
+                        <div class="service-badge rounded-lg px-3 py-2 text-sm font-semibold">
+                            <i class="fas fa-microchip mr-1"></i> Scanner
+                        </div>
+                    </div>
+
+                    <p class="text-lg font-bold text-yellow-300 mb-4">
+                        SE SEU CARRO PRECISA, NÓS FAZEMOS!
+                    </p>
+
+                    <!-- CTA OTIMIZADO -->
+                    <a href="https://wa.me/556734610167" class="bg-yellow-400 text-red-700 px-6 py-3 rounded-lg font-black text-sm inline-block hover:bg-yellow-300 transition-colors shadow-lg">
+                        <i class="fab fa-whatsapp mr-2"></i>CONSULTAR TODOS SERVIÇOS
+                    </a>
+                </div>
+            </div>
+
+            <!-- MARCAS QUE TRABALHAMOS OTIMIZADA - COM ESPAÇO PARA LOGOS -->
+            <div class="bg-gray-50 rounded-2xl p-6 mb-12">
+                <div class="text-center mb-6">
+                    <h3 class="text-2xl font-black text-gray-900 mb-3">🏎️ Marcas que Trabalhamos</h3>
+                    <p class="text-gray-600">
+                        Atendemos <strong class="text-red-600">TODAS</strong> as principais marcas do mercado
+                    </p>
+                </div>
+                
+                <!-- PRIMEIRA LINHA DE MARCAS - COM ESPAÇO PARA LOGOS -->
+                <div class="grid grid-cols-3 md:grid-cols-6 gap-4 text-center">
+                    <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://freepnglogo.com/images/all_img/1733727354_chevrolet-logo-png.png" alt="Chevrolet" class="brand-logo mx-auto mb-1">
+                        <span class="font-bold text-gray-700 text-xs">Chevrolet</span>
+                    </div>
+                    <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://cdn.freebiesupply.com/logos/large/2x/volkswagen-1-logo-black-and-white.png" alt="Volkswagen" class="brand-logo mx-auto mb-1">
+                        <span class="font-bold text-gray-700 text-xs">Volkswagen</span>
+                    </div>
+                    <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://logos-world.net/wp-content/uploads/2021/05/Ford-Logo.png" alt="Ford" class="brand-logo mx-auto mb-1">
+                        <span class="font-bold text-gray-700 text-xs">Ford</span>
+                    </div>
+                    <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://images.seeklogo.com/logo-png/60/3/toyota-logo-png_seeklogo-607217.png" alt="Toyota" class="brand-logo mx-auto mb-1">
+                        <span class="font-bold text-gray-700 text-xs">Toyota</span>
+                    </div>
+                    <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://www.pngplay.com/wp-content/uploads/13/Honda-Symbol-Free-Picture-PNG.png" alt="Honda" class="brand-logo mx-auto mb-1">
+                        <span class="font-bold text-gray-700 text-xs">Honda</span>
+                    </div>
+                    <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://download.logo.wine/logo/Fiat_Automobiles/Fiat_Automobiles-Logo.wine.png" alt="Fiat" class="brand-logo mx-auto mb-1">
+                        <span class="font-bold text-gray-700 text-xs">Fiat</span>
+                    </div>
+                </div>
+
+                <!-- SEGUNDA LINHA DE MARCAS - COM ESPAÇO PARA LOGOS -->
+                <div class="grid grid-cols-3 md:grid-cols-6 gap-4 text-center mt-4">
+                    <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://www.pngplay.com/wp-content/uploads/13/Hyundai-Logo-PNG-Images-HD.png" alt="Hyundai" class="brand-logo mx-auto mb-1">
+                        <span class="font-bold text-gray-700 text-xs">Hyundai</span>
+                    </div>
+                    <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://download.logo.wine/logo/Nissan_Motor_Indonesia/Nissan_Motor_Indonesia-Logo.wine.png" alt="Nissan" class="brand-logo mx-auto mb-1">
+                        <span class="font-bold text-gray-700 text-xs">Nissan</span>
+                    </div>
+                    <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://pngimg.com/d/renault_PNG45.png" alt="Renault" class="brand-logo mx-auto mb-1">
+                        <span class="font-bold text-gray-700 text-xs">Renault</span>
+                    </div>
+                    <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Mercedes-Logo.svg/2048px-Mercedes-Logo.svg.png" alt="Mercedes" class="brand-logo mx-auto mb-1">
+                        <span class="font-bold text-gray-700 text-xs">Mercedes</span>
+                    </div>
+                    <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://1000logos.net/wp-content/uploads/2018/02/BMW-Logo-1997.png" alt="BMW" class="brand-logo mx-auto mb-1">
+                        <span class="font-bold text-gray-700 text-xs">BMW</span>
+                    </div>
+                    <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://pluspng.com/img-png/audi-logo-png-audi-logo-transparent-png-pluspng-1470x1100.png" alt="Audi" class="brand-logo mx-auto mb-1">
+                        <span class="font-bold text-gray-700 text-xs">Audi</span>
+                    </div>
+                </div>
+
+                <!-- MENSAGEM ESTRATÉGICA OTIMIZADA -->
+                <div class="text-center mt-6">
+                    <p class="text-gray-600 text-sm">
+                        <strong class="text-red-600">+20 marcas atendidas!</strong> 
+                        Da popular ao luxo, temos expertise para cuidar do seu veículo.
+                    </p>
+                </div>
+            </div>
+
+            <!-- CTA FINAL OTIMIZADO -->
+            <div class="text-center fade-in-up">
+                <div class="bg-gradient-to-r from-red-600 to-orange-600 rounded-2xl p-6 text-white shadow-xl">
+                    <h3 class="text-xl font-black mb-3">Não Encontrou o que Precisa?</h3>
+                    <p class="mb-4 opacity-90">
+                        <strong>Fale diretamente com nossos especialistas!</strong>
+                    </p>
+                    <a href="https://wa.me/556734610167" class="bg-white text-red-600 px-6 py-3 rounded-lg font-black text-sm inline-block hover:bg-gray-100 transition-colors">
+                        <i class="fab fa-whatsapp mr-2"></i>CONSULTAR ESPECIALISTA
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner CTA Intermediário OTIMIZADO -->
+    <section class="py-16 final-cta text-white">
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl font-black mb-4">
+                Junte-se aos <span class="text-yellow-300">15.200+ Clientes</span> Satisfeitos!
+            </h2>
+            <p class="text-lg mb-6 opacity-90">
+                Descubra por que somos a oficina de confiança da região há mais de 6 anos
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="https://wa.me/556734610167" class="bg-white text-red-600 px-6 py-3 rounded-lg font-black hover:bg-gray-100 transition-colors shadow-lg">
+                    <i class="fab fa-whatsapp mr-2"></i>CHAMAR NO WHATSAPP
+                </a>
+                <a href="tel:6734610167" class="bg-black bg-opacity-30 text-white px-6 py-3 rounded-lg font-black border-2 border-white border-opacity-50 hover:bg-opacity-50 transition-colors">
+                    <i class="fas fa-phone-alt mr-2"></i>LIGAR AGORA
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato OTIMIZADO -->
+    <section id="contato" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12 fade-in-up">
+                <span class="text-red-600 font-bold text-sm uppercase tracking-wider bg-red-50 px-4 py-2 rounded-full">Contato</span>
+                <h2 class="text-3xl md:text-4xl font-black mt-6 mb-6 text-gray-900">
+                    Vamos Atender seu 
+                    <span class="text-red-600">Carro!</span>
+                </h2>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="fade-in-up">
+                    <div class="bg-gray-50 rounded-2xl p-6">
+                        <h3 class="text-xl font-black mb-4 text-gray-900">📍 Onde Estamos</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt text-red-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-black text-gray-900 mb-1 text-sm">Endereço</h4>
+                                    <p class="text-gray-600 text-sm">Rua das Timbiras, 212 - Centro</p>
+                                    <p class="text-gray-500 text-xs">Naviraí - MS</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-3">
+                                <div class="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-phone-alt text-red-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-black text-gray-900 mb-1 text-sm">Telefone</h4>
+                                    <p class="text-gray-600 text-sm">(67) 3461-0167</p>
+                                    <a href="tel:6734610167" class="text-red-600 font-bold text-xs hover:text-red-700">
+                                        <i class="fas fa-phone mr-1"></i>Clique para ligar
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-3">
+                                <div class="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-clock text-red-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-black text-gray-900 mb-1 text-sm">Horário</h4>
+                                    <p class="text-gray-600 text-sm">Segunda a Sexta: <strong>8h às 18h</strong></p>
+                                    <p class="text-gray-500 text-xs">Atendimento com hora marcada</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CTA Localização OTIMIZADO -->
+                        <div class="mt-6 p-3 bg-red-600 rounded-xl text-white text-center">
+                            <h4 class="font-bold mb-1 text-sm">🚗 Estacionamento Próprio</h4>
+                            <p class="text-xs opacity-90">Facilidade total para nossos clientes</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in-up">
+                    <div class="bg-gradient-to-br from-red-600 to-red-700 rounded-2xl p-6 text-white">
+                        <h3 class="text-xl font-black mb-4">💬 Fale Conosco Agora</h3>
+                        <p class="mb-4 opacity-90 text-sm">
+                            Pronto para dar ao seu carro o cuidado que ele merece? 
+                            Entre em contato por um dos canais abaixo:
+                        </p>
+
+                        <div class="space-y-3">
+                            <a href="https://wa.me/556734610167" 
+                               class="bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-lg font-bold text-sm w-full text-center block transition-colors">
+                                <i class="fab fa-whatsapp mr-2"></i>WHATSAPP RÁPIDO
+                            </a>
+                            
+                            <a href="tel:6734610167"
+                               class="bg-white text-red-600 hover:bg-gray-100 px-4 py-3 rounded-lg font-bold text-sm w-full text-center block transition-colors">
+                                <i class="fas fa-phone-alt mr-2"></i>LIGAR AGORA
+                            </a>
+                        </div>
+
+                        <div class="mt-4 p-3 bg-white bg-opacity-10 rounded-xl">
+                            <p class="text-xs opacity-90">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <strong>Resposta em até 5 minutos</strong> durante o horário comercial
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer OTIMIZADO -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-6 mb-6">
+                <div>
+                    <div class="logo-container inline-block mb-3">
+                        <img src="icon.png" alt="Oliveira Car Service" class="h-10 w-10 rounded-lg">
+                    </div>
+                    <h3 class="text-lg font-black mb-3">OLIVEIRA CAR SERVICE</h3>
+                    <p class="text-gray-400 text-xs mb-3">
+                        Excelência automotiva desde 2019. Cuidando do seu carro com fé e dedicação.
+                    </p>
+                    <div class="flex space-x-3">
+                        <a href="https://wa.me/556734610167" class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-500 transition-colors text-xs">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors text-xs">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors text-xs">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-black mb-3 text-sm">Links Rápidos</h4>
+                    <ul class="space-y-1 text-gray-400 text-xs">
+                        <li><a href="#home" class="hover:text-white transition-colors">Início</a></li>
+                        <li><a href="#sobre" class="hover:text-white transition-colors">Nossa História</a></li>
+                        <li><a href="#fundadores" class="hover:text-white transition-colors">Fundadores</a></li>
+                        <li><a href="#servicos" class="hover:text-white transition-colors">Serviços</a></li>
+                        <li><a href="#contato" class="hover:text-white transition-colors">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-black mb-3 text-sm">Nossos Serviços</h4>
+                    <ul class="space-y-1 text-gray-400 text-xs">
+                        <li><a href="#servicos" class="hover:text-white transition-colors">Troca de Óleo</a></li>
+                        <li><a href="#servicos" class="hover:text-white transition-colors">Sistema de Freios</a></li>
+                        <li><a href="#servicos" class="hover:text-white transition-colors">Suspensão</a></li>
+                        <li><a href="#servicos" class="hover:text-white transition-colors">Elétrica</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-black mb-3 text-sm">Contato Rápido</h4>
+                    <div class="space-y-2 text-gray-400 text-xs">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-map-marker-alt text-red-500"></i>
+                            <span>Rua das Timbiras, 212 - Centro</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-phone-alt text-red-500"></i>
+                            <span>(67) 3461-0167</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-clock text-red-500"></i>
+                            <span>Seg-Sex: 8h-18h</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Footer OTIMIZADO -->
+                    <a href="https://wa.me/556734610167" class="cta-primary text-white px-4 py-2 rounded-lg font-bold text-xs inline-block mt-3 w-full text-center">
+                        <i class="fab fa-whatsapp mr-1"></i>FALAR NO ZAP
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-6 text-center">
+                <p class="text-gray-500 text-xs">
+                    &copy; 2025 Oliveira Car Service. Todos os direitos reservados. 
+                    <span class="text-red-500">+6 anos de paixão por carros!</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Flutuante OTIMIZADO -->
+    <a href="https://wa.me/556734610167" class="whatsapp-float fixed bottom-6 right-6 w-14 h-14 rounded-full flex items-center justify-center z-40">
+        <i class="fab fa-whatsapp text-xl text-white"></i>
+    </a>
+
+    <script>
+        // ===== MELHORIAS ESTRATÉGICAS =====
+
+        // 1. INDICADOR DE SCROLL
+        window.addEventListener('scroll', function() {
+            const winHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.pageYOffset;
+            const scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
+            document.getElementById('scrollIndicator').style.width = scrollPercent + '%';
+        });
+
+        // 2. CONTADOR ANIMADO
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target.toLocaleString('pt-BR');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start).toLocaleString('pt-BR');
+                }
+            }, 16);
+        }
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    animateCounter(counter, target);
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.counter').forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        // 3. ANIMAÇÕES ORIGINAIS
+        document.addEventListener('DOMContentLoaded', function() {
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Animação de elementos ao scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-up, .slide-in-left').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Navegação ativa
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (scrollY >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
