@@ -3,6 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- NOVAS META TAGS PARA MELHOR SEO E EXPERIÊNCIA MOBILE -->
+    <meta name="description" content="Oliveira Car Service - Excelência automotiva desde 2019. Mecânica especializada, troca de óleo, freios, suspensão e muito mais. Atendemos todas as marcas!">
+    <meta name="keywords" content="mecânica, oficina, troca de óleo, freios, suspensão, Naviraí, carros, automóveis">
+    <meta name="author" content="Oliveira Car Service">
+    
+    <!-- OPEN GRAPH TAGS PARA REDES SOCIAIS -->
+    <meta property="og:title" content="Oliveira Car Service - Excelência Automotiva desde 2019">
+    <meta property="og:description" content="+15.200 clientes satisfeitos. Seu carro nas mãos de especialistas com 5+ anos de experiência.">
+    <meta property="og:type" content="website">
+    
     <title>Oliveira Car Service - Excelência Automotiva desde 2019</title>
     
     <!-- FAVICON -->
@@ -22,18 +33,25 @@
             --light-cream: #fef7ed;
         }
 
-        /* SCROLL SUAVE GLOBAL */
+        /* RESET PARA GARANTIR SCROLL NO TOPO */
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Espaço para o header fixo */
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
             background: #ffffff;
             color: #374151;
+            overflow-x: hidden; /* Evitar scroll horizontal */
         }
 
-        /* Header estilizado */
+        /* GARANTIR QUE A PÁGINA INICIE NO TOPO */
+        body, html {
+            scroll-behavior: auto !important;
+        }
+
+        /* Header estilizado - MELHORADO PARA MOBILE */
         header {
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
@@ -74,7 +92,51 @@
             width: 100%;
         }
 
-        /* Hero Section impactante */
+        /* MELHORIAS ESPECÍFICAS PARA MOBILE */
+        @media (max-width: 768px) {
+            /* Ajustes de espaçamento para mobile */
+            .hero-section {
+                padding-top: 100px !important;
+                padding-bottom: 60px !important;
+            }
+            
+            /* Textos menores em mobile */
+            .mobile-text-lg {
+                font-size: 1.125rem !important;
+            }
+            
+            .mobile-text-xl {
+                font-size: 1.25rem !important;
+            }
+            
+            /* Botões em largura total em mobile */
+            .mobile-full-width {
+                width: 100%;
+            }
+            
+            /* Grid de serviços em coluna única */
+            .mobile-single-column {
+                grid-template-columns: 1fr !important;
+            }
+            
+            /* Ajuste de padding para seções */
+            .section-padding {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+            
+            /* Ajuste de tamanho para logos de marcas */
+            .mobile-brand-logo {
+                height: 25px !important;
+            }
+            
+            /* Ajuste de fonte para títulos em mobile */
+            .mobile-heading {
+                font-size: 1.75rem !important;
+            }
+        }
+
+        /* Hero Section impactante - OTIMIZADO PARA MOBILE */
         .hero-gradient {
             background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%);
         }
@@ -85,7 +147,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* CTAs OTIMIZADOS */
+        /* CTAs OTIMIZADOS - MELHOR ADAPTAÇÃO MOBILE */
         .cta-primary {
             background: linear-gradient(135deg, var(--primary-red), var(--warm-orange));
             box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
@@ -128,7 +190,7 @@
             box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3);
         }
 
-        /* Cards estilizados */
+        /* Cards estilizados - OTIMIZADOS PARA MOBILE */
         .service-card {
             background: white;
             border: 1px solid #f3f4f6;
@@ -326,7 +388,7 @@
             transform: scale(1.1);
         }
 
-        /* 4. SEÇÃO "E MUITO MAIS!" SUPER ESTILIZADA */
+        /* 4. SEÇÃO "E MUITO MAIS!" SUPER ESTILIZADA - ATUALIZADA */
         .services-showcase {
             background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%);
             position: relative;
@@ -355,6 +417,27 @@
             background: rgba(255, 255, 255, 0.25);
             transform: translateY(-2px);
         }
+
+        /* 5. MENU MOBILE */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        .menu-overlay {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -362,22 +445,22 @@
     <!-- 1. INDICADOR DE SCROLL DISCRETO -->
     <div class="scroll-indicator" id="scrollIndicator"></div>
 
-    <!-- Header ATUALIZADO -->
+    <!-- Header ATUALIZADO COM MENU MOBILE -->
     <header class="fixed w-full z-50 py-3">
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="flex items-center justify-between">
                 <!-- Logo Container -->
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-3">
                     <div class="logo-container">
                         <img src="icon.png" alt="Oliveira Car Service" class="h-10 w-10 rounded-lg">
                     </div>
                     <div>
-                        <h1 class="text-xl font-black text-gray-900">OLIVEIRA CAR SERVICE</h1>
-                        <p class="text-xs text-gray-600 font-semibold">Excelência desde 2019</p>
+                        <h1 class="text-lg sm:text-xl font-black text-gray-900">OLIVEIRA CAR SERVICE</h1>
+                        <p class="text-xs text-gray-600 font-semibold hidden sm:block">Excelência desde 2019</p>
                     </div>
                 </div>
 
-                <!-- Navegação -->
+                <!-- Navegação Desktop -->
                 <nav class="hidden md:flex items-center space-x-8">
                     <a href="#home" class="nav-link text-gray-700 hover:text-red-600">Início</a>
                     <a href="#sobre" class="nav-link text-gray-700 hover:text-red-600">Nossa História</a>
@@ -393,45 +476,73 @@
                     </a>
                 </div>
 
-                <button class="md:hidden w-10 h-10 flex flex-col justify-center items-center space-y-1.5">
-                    <span class="w-6 h-0.5 bg-gray-700 rounded"></span>
-                    <span class="w-6 h-0.5 bg-gray-700 rounded"></span>
-                    <span class="w-6 h-0.5 bg-gray-700 rounded"></span>
+                <!-- Botão Menu Mobile -->
+                <button id="mobileMenuButton" class="md:hidden w-10 h-10 flex flex-col justify-center items-center space-y-1.5">
+                    <span class="w-6 h-0.5 bg-gray-700 rounded transition-all"></span>
+                    <span class="w-6 h-0.5 bg-gray-700 rounded transition-all"></span>
+                    <span class="w-6 h-0.5 bg-gray-700 rounded transition-all"></span>
                 </button>
             </div>
         </div>
     </header>
 
+    <!-- Menu Mobile -->
+    <div id="mobileMenuOverlay" class="menu-overlay fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"></div>
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 h-full w-64 bg-white z-50 p-6 md:hidden">
+        <div class="flex justify-between items-center mb-8">
+            <div class="logo-container">
+                <img src="icon.png" alt="Oliveira Car Service" class="h-10 w-10 rounded-lg">
+            </div>
+            <button id="closeMobileMenu" class="w-8 h-8 flex items-center justify-center text-gray-700">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        
+        <nav class="flex flex-col space-y-6">
+            <a href="#home" class="nav-link text-gray-700 hover:text-red-600 text-lg font-semibold">Início</a>
+            <a href="#sobre" class="nav-link text-gray-700 hover:text-red-600 text-lg font-semibold">Nossa História</a>
+            <a href="#fundadores" class="nav-link text-gray-700 hover:text-red-600 text-lg font-semibold">Fundadores</a>
+            <a href="#servicos" class="nav-link text-gray-700 hover:text-red-600 text-lg font-semibold">Serviços</a>
+            <a href="#contato" class="nav-link text-gray-700 hover:text-red-600 text-lg font-semibold">Contato</a>
+            
+            <div class="pt-4 border-t border-gray-200">
+                <a href="https://wa.me/556734610167" class="cta-primary text-white px-4 py-3 rounded-lg font-bold text-sm w-full text-center block">
+                    <i class="fab fa-whatsapp mr-2"></i>FALAR NO ZAP
+                </a>
+            </div>
+        </nav>
+    </div>
+
     <!-- Hero Section OTIMIZADA -->
-    <section id="home" class="pt-32 pb-20 hero-gradient text-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
+    <section id="home" class="pt-32 pb-20 hero-gradient text-white hero-section">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
                 <div class="slide-in-left">
-                    <div class="hero-badge rounded-full px-6 py-2 inline-block mb-6">
+                    <div class="hero-badge rounded-full px-4 py-2 inline-block mb-6">
                         <span class="text-sm font-semibold">🏆 +15.200 Clientes Satisfeitos</span>
                     </div>
                     
-                    <h1 class="text-4xl md:text-5xl font-black mb-6 leading-tight">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-black mb-6 leading-tight mobile-heading">
                         Seu carro nas mãos de 
                         <span class="text-yellow-300">especialistas</span>
                     </h1>
                     
-                    <p class="text-lg mb-8 leading-relaxed opacity-90">
+                    <p class="mobile-text-lg mb-8 leading-relaxed opacity-90">
                         <strong>5+ anos de excelência</strong> em cuidados automotivos. 
                         Tecnologia de ponta, transparência absoluta e o compromisso de quem faz com fé e dedicação.
                     </p>
 
                     <!-- CTAs HERO OTIMIZADOS -->
                     <div class="flex flex-col sm:flex-row gap-3 mb-8">
-                        <a href="https://wa.me/556734610167" class="cta-primary text-white px-6 py-3 rounded-lg font-bold text-center">
+                        <a href="https://wa.me/556734610167" class="cta-primary text-white px-6 py-3 rounded-lg font-bold text-center mobile-full-width">
                             <i class="fab fa-whatsapp mr-2"></i>FALAR NO ZAP
                         </a>
-                        <a href="#contato" class="cta-secondary px-6 py-3 rounded-lg font-bold text-center">
+                        <a href="#contato" class="cta-secondary px-6 py-3 rounded-lg font-bold text-center mobile-full-width">
                             <i class="fas fa-calendar-check mr-2"></i>AGENDAR VISITA
                         </a>
                     </div>
 
-                    <div class="flex items-center space-x-6 text-sm">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-6 space-y-3 sm:space-y-0 text-sm">
                         <div class="flex items-center space-x-2">
                             <i class="fas fa-shield-alt text-yellow-400"></i>
                             <span>Garantia em Todos os Serviços</span>
@@ -450,7 +561,7 @@
                              class="rounded-2xl shadow-xl w-full">
                         
                         <!-- Destaques Flutuantes OTIMIZADOS -->
-                        <div class="absolute -bottom-4 -left-4 bg-white rounded-2xl p-4 shadow-xl">
+                        <div class="absolute -bottom-4 -left-4 bg-white rounded-2xl p-4 shadow-xl hidden sm:block">
                             <div class="flex items-center space-x-6">
                                 <div class="text-center">
                                     <div class="stat-number">
@@ -474,17 +585,17 @@
     </section>
 
     <!-- Nossa História OTIMIZADA -->
-    <section id="sobre" class="py-16 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-12 fade-in-up">
+    <section id="sobre" class="py-12 md:py-16 bg-white section-padding">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-8 md:mb-12 fade-in-up">
                 <span class="text-red-600 font-bold text-sm uppercase tracking-wider bg-red-50 px-4 py-2 rounded-full">Nossa História</span>
-                <h2 class="text-3xl md:text-4xl font-black mt-6 mb-6 text-gray-900">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-black mt-6 mb-6 text-gray-900 mobile-heading">
                     Uma Jornada de 
                     <span class="text-red-600">Fé e Dedicação</span>
                 </h2>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-10 items-center">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-10 items-center">
                 <div class="fade-in-up">
                     <div class="flex items-center space-x-4 mb-6">
                         <div class="logo-container">
@@ -516,10 +627,10 @@
                         
                         <!-- CTA História OTIMIZADO -->
                         <div class="mt-6 flex flex-col sm:flex-row gap-3">
-                            <a href="https://wa.me/556734610167" class="cta-primary text-white px-5 py-2.5 rounded-lg font-bold text-center text-sm">
+                            <a href="https://wa.me/556734610167" class="cta-primary text-white px-5 py-2.5 rounded-lg font-bold text-center text-sm mobile-full-width">
                                 <i class="fab fa-whatsapp mr-2"></i>CONHECER TRABALHO
                             </a>
-                            <a href="#servicos" class="cta-secondary px-5 py-2.5 rounded-lg font-bold text-center text-sm">
+                            <a href="#servicos" class="cta-secondary px-5 py-2.5 rounded-lg font-bold text-center text-sm mobile-full-width">
                                 <i class="fas fa-tools mr-2"></i>VER SERVIÇOS
                             </a>
                         </div>
@@ -531,7 +642,7 @@
                          alt="Nossa equipe" 
                          class="rounded-2xl shadow-lg w-full">
                     <div class="mt-6 bg-gray-50 rounded-xl p-4 text-center">
-                        <div class="flex justify-center space-x-6">
+                        <div class="flex justify-center space-x-4 md:space-x-6">
                             <div class="text-center">
                                 <div class="text-xl font-black text-red-600">
                                     <span class="counter" data-target="15200">0</span>+
@@ -556,11 +667,11 @@
     </section>
 
     <!-- Seção Fundadores OTIMIZADA - CORES INVERTIDAS -->
-    <section id="fundadores" class="py-16 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-12 fade-in-up">
+    <section id="fundadores" class="py-12 md:py-16 bg-gray-50 section-padding">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-8 md:mb-12 fade-in-up">
                 <span class="text-red-600 font-bold text-sm uppercase tracking-wider bg-red-50 px-4 py-2 rounded-full">Conheça Nossa Equipe</span>
-                <h2 class="text-3xl md:text-4xl font-black mt-6 mb-6 text-gray-900">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-black mt-6 mb-6 text-gray-900 mobile-heading">
                     <span class="text-red-600">Os</span> Fundadores
                 </h2>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -568,7 +679,7 @@
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-6">
+            <div class="grid md:grid-cols-2 gap-6 mobile-single-column">
                 <!-- Fundador 1 OTIMIZADO -->
                 <div class="founder-card rounded-2xl p-6 text-center fade-in-up">
                     <div class="flex flex-col items-center mb-4">
@@ -653,13 +764,13 @@
             </div>
 
             <!-- CTA Fundadores OTIMIZADO -->
-            <div class="text-center mt-12 fade-in-up">
+            <div class="text-center mt-8 md:mt-12 fade-in-up">
                 <div class="bg-white rounded-2xl p-6 shadow-lg border-2 border-red-600">
                     <h3 class="text-xl font-black mb-3 text-gray-900">Quer Conhecer Melhor Nossa Equipe?</h3>
                     <p class="text-gray-600 mb-4">
                         Agende uma visita e converse diretamente com nossos fundadores
                     </p>
-                    <a href="https://wa.me/556734610167" class="cta-primary text-white px-6 py-3 rounded-lg font-bold text-sm inline-block">
+                    <a href="https://wa.me/556734610167" class="cta-primary text-white px-6 py-3 rounded-lg font-bold text-sm inline-block mobile-full-width">
                         <i class="fab fa-whatsapp mr-2"></i>FALAR COM OS FUNDADORES
                     </a>
                 </div>
@@ -668,11 +779,11 @@
     </section>
 
     <!-- === SERVIÇOS ATUALIZADO - OTIMIZADO E ESTRATÉGICO === -->
-    <section id="servicos" class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-12 fade-in-up">
+    <section id="servicos" class="py-12 md:py-16 bg-white section-padding">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-8 md:mb-12 fade-in-up">
                 <span class="text-red-600 font-bold text-sm uppercase tracking-wider bg-red-50 px-4 py-2 rounded-full">Serviços Completos</span>
-                <h2 class="text-3xl md:text-4xl font-black mt-6 mb-6 text-gray-900">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-black mt-6 mb-6 text-gray-900 mobile-heading">
                     Tudo que Seu Carro
                     <span class="text-red-600"> Precisa</span>
                 </h2>
@@ -682,7 +793,7 @@
             </div>
 
             <!-- SERVIÇOS PRINCIPAIS OTIMIZADOS -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 md:mb-12 mobile-single-column">
                 <div class="service-card rounded-2xl p-6 text-center">
                     <div class="service-icon">
                         <i class="fas fa-oil-can text-xl text-white"></i>
@@ -727,7 +838,7 @@
             </div>
 
             <!-- SERVIÇOS ADICIONAIS OTIMIZADOS -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 md:mb-10">
                 <div class="text-center p-4 bg-gray-50 rounded-xl hover:bg-red-50 transition-colors">
                     <i class="fas fa-bolt text-xl text-red-600 mb-2"></i>
                     <h4 class="font-black text-gray-900 mb-1 text-sm">Elétrica</h4>
@@ -750,40 +861,34 @@
                 </div>
             </div>
 
-            <!-- SEÇÃO "E MUITO MAIS!" - SUPER ESTILIZADA -->
-            <div class="services-showcase rounded-3xl p-8 text-white text-center mb-12 relative overflow-hidden">
+            <!-- SEÇÃO "E MUITO MAIS!" - SUPER ESTILIZADA E ATUALIZADA -->
+            <div class="services-showcase rounded-3xl p-6 md:p-8 text-white text-center mb-8 md:mb-12 relative overflow-hidden">
                 <!-- Elementos decorativos -->
                 <div class="absolute top-0 left-0 w-20 h-20 bg-yellow-400 rounded-full -translate-x-10 -translate-y-10 opacity-20"></div>
                 <div class="absolute bottom-0 right-0 w-16 h-16 bg-yellow-400 rounded-full translate-x-8 translate-y-8 opacity-20"></div>
                 
                 <div class="relative z-10">
                     <!-- Ícone principal -->
-                    <div class="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                        <i class="fas fa-tools text-2xl text-white"></i>
+                    <div class="w-14 h-14 md:w-16 md:h-16 bg-yellow-400 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <i class="fas fa-tools text-xl md:text-2xl text-white"></i>
                     </div>
                     
-                    <h3 class="text-2xl font-black mb-4">🎯 E MUITO MAIS!</h3>
+                    <h3 class="text-xl md:text-2xl font-black mb-4">🎯 E MUITO MAIS!</h3>
                     
-                    <!-- Badges de serviços -->
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+                    <!-- Badges de serviços - ATUALIZADO -->
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
                         <div class="service-badge rounded-lg px-3 py-2 text-sm font-semibold">
-                            <i class="fas fa-cog mr-1"></i> Alinhamento
+                            <i class="fas fa-sync-alt mr-1"></i> Revisões
                         </div>
                         <div class="service-badge rounded-lg px-3 py-2 text-sm font-semibold">
-                            <i class="fas fa-sync-alt mr-1"></i> Balanceamento
+                            <i class="fas fa-shield-alt mr-1"></i> Correias
                         </div>
-                        <div class="service-badge rounded-lg px-3 py-2 text-sm font-semibold">
-                            <i class="fas fa-shield-alt mr-1"></i> Revisões
-                        </div>
-                        <div class="service-badge rounded-lg px-3 py-2 text-sm font-semibold">
-                            <i class="fas fa-bolt mr-1"></i> Correias
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
                         <div class="service-badge rounded-lg px-3 py-2 text-sm font-semibold">
                             <i class="fas fa-fire mr-1"></i> Escapamento
                         </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
                         <div class="service-badge rounded-lg px-3 py-2 text-sm font-semibold">
                             <i class="fas fa-spray-can mr-1"></i> Higienização
                         </div>
@@ -795,21 +900,21 @@
                         </div>
                     </div>
 
-                    <p class="text-lg font-bold text-yellow-300 mb-4">
+                    <p class="text-base md:text-lg font-bold text-yellow-300 mb-4">
                         SE SEU CARRO PRECISA, NÓS FAZEMOS!
                     </p>
 
                     <!-- CTA OTIMIZADO -->
-                    <a href="https://wa.me/556734610167" class="bg-yellow-400 text-red-700 px-6 py-3 rounded-lg font-black text-sm inline-block hover:bg-yellow-300 transition-colors shadow-lg">
+                    <a href="https://wa.me/556734610167" class="bg-yellow-400 text-red-700 px-6 py-3 rounded-lg font-black text-sm inline-block hover:bg-yellow-300 transition-colors shadow-lg mobile-full-width">
                         <i class="fab fa-whatsapp mr-2"></i>CONSULTAR TODOS SERVIÇOS
                     </a>
                 </div>
             </div>
 
             <!-- MARCAS QUE TRABALHAMOS OTIMIZADA - COM ESPAÇO PARA LOGOS -->
-            <div class="bg-gray-50 rounded-2xl p-6 mb-12">
+            <div class="bg-gray-50 rounded-2xl p-6 mb-8 md:mb-12">
                 <div class="text-center mb-6">
-                    <h3 class="text-2xl font-black text-gray-900 mb-3">🏎️ Marcas que Trabalhamos</h3>
+                    <h3 class="text-xl md:text-2xl font-black text-gray-900 mb-3">🏎️ Marcas que Trabalhamos</h3>
                     <p class="text-gray-600">
                         Atendemos <strong class="text-red-600">TODAS</strong> as principais marcas do mercado
                     </p>
@@ -818,27 +923,27 @@
                 <!-- PRIMEIRA LINHA DE MARCAS - COM ESPAÇO PARA LOGOS -->
                 <div class="grid grid-cols-3 md:grid-cols-6 gap-4 text-center">
                     <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                        <img src="https://freepnglogo.com/images/all_img/1733727354_chevrolet-logo-png.png" alt="Chevrolet" class="brand-logo mx-auto mb-1">
+                        <img src="https://freepnglogo.com/images/all_img/1733727354_chevrolet-logo-png.png" alt="Chevrolet" class="brand-logo mx-auto mb-1 mobile-brand-logo">
                         <span class="font-bold text-gray-700 text-xs">Chevrolet</span>
                     </div>
                     <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                        <img src="https://cdn.freebiesupply.com/logos/large/2x/volkswagen-1-logo-black-and-white.png" alt="Volkswagen" class="brand-logo mx-auto mb-1">
+                        <img src="https://cdn.freebiesupply.com/logos/large/2x/volkswagen-1-logo-black-and-white.png" alt="Volkswagen" class="brand-logo mx-auto mb-1 mobile-brand-logo">
                         <span class="font-bold text-gray-700 text-xs">Volkswagen</span>
                     </div>
                     <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                        <img src="https://logos-world.net/wp-content/uploads/2021/05/Ford-Logo.png" alt="Ford" class="brand-logo mx-auto mb-1">
+                        <img src="https://logos-world.net/wp-content/uploads/2021/05/Ford-Logo.png" alt="Ford" class="brand-logo mx-auto mb-1 mobile-brand-logo">
                         <span class="font-bold text-gray-700 text-xs">Ford</span>
                     </div>
                     <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                        <img src="https://images.seeklogo.com/logo-png/60/3/toyota-logo-png_seeklogo-607217.png" alt="Toyota" class="brand-logo mx-auto mb-1">
+                        <img src="https://images.seeklogo.com/logo-png/60/3/toyota-logo-png_seeklogo-607217.png" alt="Toyota" class="brand-logo mx-auto mb-1 mobile-brand-logo">
                         <span class="font-bold text-gray-700 text-xs">Toyota</span>
                     </div>
                     <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                        <img src="https://www.pngplay.com/wp-content/uploads/13/Honda-Symbol-Free-Picture-PNG.png" alt="Honda" class="brand-logo mx-auto mb-1">
+                        <img src="https://www.pngplay.com/wp-content/uploads/13/Honda-Symbol-Free-Picture-PNG.png" alt="Honda" class="brand-logo mx-auto mb-1 mobile-brand-logo">
                         <span class="font-bold text-gray-700 text-xs">Honda</span>
                     </div>
                     <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                        <img src="https://download.logo.wine/logo/Fiat_Automobiles/Fiat_Automobiles-Logo.wine.png" alt="Fiat" class="brand-logo mx-auto mb-1">
+                        <img src="https://download.logo.wine/logo/Fiat_Automobiles/Fiat_Automobiles-Logo.wine.png" alt="Fiat" class="brand-logo mx-auto mb-1 mobile-brand-logo">
                         <span class="font-bold text-gray-700 text-xs">Fiat</span>
                     </div>
                 </div>
@@ -846,27 +951,27 @@
                 <!-- SEGUNDA LINHA DE MARCAS - COM ESPAÇO PARA LOGOS -->
                 <div class="grid grid-cols-3 md:grid-cols-6 gap-4 text-center mt-4">
                     <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                        <img src="https://www.pngplay.com/wp-content/uploads/13/Hyundai-Logo-PNG-Images-HD.png" alt="Hyundai" class="brand-logo mx-auto mb-1">
+                        <img src="https://www.pngplay.com/wp-content/uploads/13/Hyundai-Logo-PNG-Images-HD.png" alt="Hyundai" class="brand-logo mx-auto mb-1 mobile-brand-logo">
                         <span class="font-bold text-gray-700 text-xs">Hyundai</span>
                     </div>
                     <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                        <img src="https://download.logo.wine/logo/Nissan_Motor_Indonesia/Nissan_Motor_Indonesia-Logo.wine.png" alt="Nissan" class="brand-logo mx-auto mb-1">
+                        <img src="https://download.logo.wine/logo/Nissan_Motor_Indonesia/Nissan_Motor_Indonesia-Logo.wine.png" alt="Nissan" class="brand-logo mx-auto mb-1 mobile-brand-logo">
                         <span class="font-bold text-gray-700 text-xs">Nissan</span>
                     </div>
                     <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                        <img src="https://pngimg.com/d/renault_PNG45.png" alt="Renault" class="brand-logo mx-auto mb-1">
+                        <img src="https://pngimg.com/d/renault_PNG45.png" alt="Renault" class="brand-logo mx-auto mb-1 mobile-brand-logo">
                         <span class="font-bold text-gray-700 text-xs">Renault</span>
                     </div>
                     <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Mercedes-Logo.svg/2048px-Mercedes-Logo.svg.png" alt="Mercedes" class="brand-logo mx-auto mb-1">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Mercedes-Logo.svg/2048px-Mercedes-Logo.svg.png" alt="Mercedes" class="brand-logo mx-auto mb-1 mobile-brand-logo">
                         <span class="font-bold text-gray-700 text-xs">Mercedes</span>
                     </div>
                     <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                        <img src="https://1000logos.net/wp-content/uploads/2018/02/BMW-Logo-1997.png" alt="BMW" class="brand-logo mx-auto mb-1">
+                        <img src="https://1000logos.net/wp-content/uploads/2018/02/BMW-Logo-1997.png" alt="BMW" class="brand-logo mx-auto mb-1 mobile-brand-logo">
                         <span class="font-bold text-gray-700 text-xs">BMW</span>
                     </div>
                     <div class="brand-card p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                        <img src="https://pluspng.com/img-png/audi-logo-png-audi-logo-transparent-png-pluspng-1470x1100.png" alt="Audi" class="brand-logo mx-auto mb-1">
+                        <img src="https://pluspng.com/img-png/audi-logo-png-audi-logo-transparent-png-pluspng-1470x1100.png" alt="Audi" class="brand-logo mx-auto mb-1 mobile-brand-logo">
                         <span class="font-bold text-gray-700 text-xs">Audi</span>
                     </div>
                 </div>
@@ -887,7 +992,7 @@
                     <p class="mb-4 opacity-90">
                         <strong>Fale diretamente com nossos especialistas!</strong>
                     </p>
-                    <a href="https://wa.me/556734610167" class="bg-white text-red-600 px-6 py-3 rounded-lg font-black text-sm inline-block hover:bg-gray-100 transition-colors">
+                    <a href="https://wa.me/556734610167" class="bg-white text-red-600 px-6 py-3 rounded-lg font-black text-sm inline-block hover:bg-gray-100 transition-colors mobile-full-width">
                         <i class="fab fa-whatsapp mr-2"></i>CONSULTAR ESPECIALISTA
                     </a>
                 </div>
@@ -896,19 +1001,19 @@
     </section>
 
     <!-- Banner CTA Intermediário OTIMIZADO -->
-    <section class="py-16 final-cta text-white">
-        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-            <h2 class="text-3xl md:text-4xl font-black mb-4">
+    <section class="py-12 md:py-16 final-cta text-white section-padding">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-black mb-4 mobile-heading">
                 Junte-se aos <span class="text-yellow-300">15.200+ Clientes</span> Satisfeitos!
             </h2>
             <p class="text-lg mb-6 opacity-90">
                 Descubra por que somos a oficina de confiança da região há mais de 6 anos
             </p>
             <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                <a href="https://wa.me/556734610167" class="bg-white text-red-600 px-6 py-3 rounded-lg font-black hover:bg-gray-100 transition-colors shadow-lg">
+                <a href="https://wa.me/556734610167" class="bg-white text-red-600 px-6 py-3 rounded-lg font-black hover:bg-gray-100 transition-colors shadow-lg mobile-full-width">
                     <i class="fab fa-whatsapp mr-2"></i>CHAMAR NO WHATSAPP
                 </a>
-                <a href="tel:6734610167" class="bg-black bg-opacity-30 text-white px-6 py-3 rounded-lg font-black border-2 border-white border-opacity-50 hover:bg-opacity-50 transition-colors">
+                <a href="tel:6734610167" class="bg-black bg-opacity-30 text-white px-6 py-3 rounded-lg font-black border-2 border-white border-opacity-50 hover:bg-opacity-50 transition-colors mobile-full-width">
                     <i class="fas fa-phone-alt mr-2"></i>LIGAR AGORA
                 </a>
             </div>
@@ -916,17 +1021,17 @@
     </section>
 
     <!-- Contato OTIMIZADO -->
-    <section id="contato" class="py-16 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-12 fade-in-up">
+    <section id="contato" class="py-12 md:py-16 bg-white section-padding">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-8 md:mb-12 fade-in-up">
                 <span class="text-red-600 font-bold text-sm uppercase tracking-wider bg-red-50 px-4 py-2 rounded-full">Contato</span>
-                <h2 class="text-3xl md:text-4xl font-black mt-6 mb-6 text-gray-900">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-black mt-6 mb-6 text-gray-900 mobile-heading">
                     Vamos Atender seu 
                     <span class="text-red-600">Carro!</span>
                 </h2>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-8">
+            <div class="grid lg:grid-cols-2 gap-6 md:gap-8">
                 <div class="fade-in-up">
                     <div class="bg-gray-50 rounded-2xl p-6">
                         <h3 class="text-xl font-black mb-4 text-gray-900">📍 Onde Estamos</h3>
@@ -1009,8 +1114,8 @@
     </section>
 
     <!-- Footer OTIMIZADO -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-6xl mx-auto px-6">
+    <footer class="bg-gray-900 text-white py-8 md:py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <div class="grid md:grid-cols-4 gap-6 mb-6">
                 <div>
                     <div class="logo-container inline-block mb-3">
@@ -1095,6 +1200,16 @@
     <script>
         // ===== MELHORIAS ESTRATÉGICAS =====
 
+        // GARANTIR QUE A PÁGINA INICIE NO TOPO
+        window.addEventListener('load', function() {
+            // Forçar scroll para o topo
+            window.scrollTo(0, 0);
+            
+            // Garantir que o body esteja no topo
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        });
+
         // 1. INDICADOR DE SCROLL
         window.addEventListener('scroll', function() {
             const winHeight = window.innerHeight;
@@ -1134,7 +1249,23 @@
             counterObserver.observe(counter);
         });
 
-        // 3. ANIMAÇÕES ORIGINAIS
+        // 3. MENU MOBILE
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('open');
+            mobileMenuOverlay.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        }
+
+        mobileMenuButton.addEventListener('click', toggleMobileMenu);
+        closeMobileMenu.addEventListener('click', toggleMobileMenu);
+        mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
+
+        // 4. ANIMAÇÕES ORIGINAIS
         document.addEventListener('DOMContentLoaded', function() {
             // Header scroll effect
             window.addEventListener('scroll', function() {
@@ -1187,5 +1318,4 @@
         });
     </script>
 </body>
-
 </html>
