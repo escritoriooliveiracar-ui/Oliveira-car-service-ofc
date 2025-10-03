@@ -336,22 +336,7 @@
             margin-bottom: 1rem;
         }
 
-        /* CORREÇÃO DO CONTADOR PARA MOBILE */
-        .counter-container {
-            position: relative;
-            margin-top: 2rem;
-        }
-
-        .counter-box {
-            background: white;
-            border-radius: 16px;
-            padding: 1.5rem;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 300px;
-            margin: 0 auto;
-        }
-
+        /* CORREÇÃO APENAS PARA MOBILE - MANTÉM DESKTOP ORIGINAL */
         @media (max-width: 768px) {
             .hero-section {
                 padding-top: 120px !important;
@@ -365,22 +350,27 @@
                 height: 25px;
             }
 
-            .stat-number {
-                font-size: 2rem;
+            /* CORREÇÃO ESPECÍFICA DO CONTADOR NO MOBILE */
+            .counter-mobile-fix {
+                position: relative !important;
+                bottom: auto !important;
+                left: auto !important;
+                margin-top: 2rem;
+                width: 100%;
             }
 
-            .counter-box {
-                padding: 1rem;
-                max-width: 280px;
+            .counter-mobile-fix > div {
+                width: 100% !important;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .stat-number {
+                font-size: 2rem;
             }
         }
 
         @media (max-width: 480px) {
-            .counter-box {
-                max-width: 250px;
-                padding: 0.75rem;
-            }
-            
             .stat-number {
                 font-size: 1.75rem;
             }
@@ -476,23 +466,21 @@
                              alt="Oficina Oliveira Car Service" 
                              class="rounded-2xl shadow-xl w-full">
                         
-                        <!-- CONTADOR CORRIGIDO - AGORA ESTÁTICO E RESPONSIVO -->
-                        <div class="counter-container">
-                            <div class="counter-box">
-                                <div class="flex items-center justify-between">
-                                    <div class="text-center flex-1">
-                                        <div class="stat-number">
-                                            <span class="counter" data-target="6">0</span>+
-                                        </div>
-                                        <div class="text-sm text-gray-600 font-semibold">Anos de Experiência</div>
+                        <!-- CONTADOR ORIGINAL - CORRIGIDO APENAS PARA MOBILE -->
+                        <div class="absolute -bottom-4 -left-4 bg-white rounded-2xl p-4 shadow-xl counter-mobile-fix">
+                            <div class="flex items-center space-x-6">
+                                <div class="text-center">
+                                    <div class="stat-number">
+                                        <span class="counter" data-target="6">0</span>+
                                     </div>
-                                    <div class="h-10 w-px bg-gray-300 mx-2"></div>
-                                    <div class="text-center flex-1">
-                                        <div class="stat-number">
-                                            <span class="counter" data-target="15200">0</span>+
-                                        </div>
-                                        <div class="text-sm text-gray-600 font-semibold">Clientes Satisfeitos</div>
+                                    <div class="text-sm text-gray-600 font-semibold">Anos de Experiência</div>
+                                </div>
+                                <div class="h-10 w-px bg-gray-300"></div>
+                                <div class="text-center">
+                                    <div class="stat-number">
+                                        <span class="counter" data-target="15200">0</span>+
                                     </div>
+                                    <div class="text-sm text-gray-600 font-semibold">Clientes Satisfeitos</div>
                                 </div>
                             </div>
                         </div>
@@ -545,7 +533,7 @@
                 
                 <div class="fade-in-up">
                     <!-- IMAGEM DO ESTACIONAMENTO - SUBSTITUA A URL PELA SUA IMAGEM -->
-                    <img src="SUA_IMAGEM_ESTACIONAMENTO_AQUI.jpg" 
+                    <img src="oficina.jpeg" 
                          alt="Estacionamento Oliveira Car Service" 
                          class="rounded-2xl shadow-lg w-full">
                 </div>
@@ -699,7 +687,7 @@
                     <div class="flex flex-col items-center mb-4">
                         <div class="founder-image rounded-full mb-3 overflow-hidden">
                             <!-- IMAGEM DO FUNDADOR 1 - SUBSTITUA PELA SUA IMAGEM -->
-                            <img src="odnilson.jpg" 
+                            <img src="odnilsoon.enc" 
                                  alt="Odnilson Oliveira - Fundador Oliveira Car Service" 
                                  class="w-full h-full object-cover">
                         </div>
@@ -741,7 +729,7 @@
                     <div class="flex flex-col items-center mb-4">
                         <div class="founder-image rounded-full mb-3 overflow-hidden">
                             <!-- IMAGEM DO FUNDADOR 2 - SUBSTITUA PELA SUA IMAGEM -->
-                            <img src="jussara.jpg" 
+                            <img src="jussara.jpeg" 
                                  alt="Jussara Sedano Oliveira - Co-fundadora Oliveira Car Service" 
                                  class="w-full h-full object-cover">
                         </div>
